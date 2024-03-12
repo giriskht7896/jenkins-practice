@@ -1,17 +1,21 @@
 // Declarative //
 pipeline {
-    agent any
+    agent { node { label 'agent-1' } } 
     stages {
-        stage('Example') {
+        stage('Build') {
             steps {
-                echo 'Hello World'
+                echo 'Building'
+            }
+        }
+        stage('Test'){
+            steps {
+                echo 'Testing'
+            }
+        }
+        stage('Deploy'){
+            steps{
+                echo 'deploying'
             }
         }
     }
-    post { 
-        always { 
-            echo 'I will always say Hello again!'
-        }
-    }
-}
-// Script //
+}    
